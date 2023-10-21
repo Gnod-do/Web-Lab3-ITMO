@@ -17,7 +17,7 @@ public class XValidator implements Validator {
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         double x = Double.parseDouble(String.valueOf(value));
-        if (x <= min || x >= max) {
+        if (x < min || x > max) {
             throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "X must lie in the interval (-5; 5)!"));
         }
     }

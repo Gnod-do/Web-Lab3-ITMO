@@ -1,7 +1,8 @@
 .body {
-    background-image: url(#{request.contextPath}/resources/images/wallpaper2.JPEG);
-    background-size: 45%;
+    background-image: url(#{request.contextPath}/resources/images/festive-monochromatic-shiny-glitter-texture.jpg);
+    background-size: 25%;
     background-repeat: repeat;
+    font-family: monospace;
 }
 
 #date {
@@ -15,12 +16,11 @@
 }
 
 #authors {
-    font-family: monospace;
+    font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
     font-size: 250%;
-    text-decoration: underline overline;
-    color: #A35CFF;
-    background-color: #F3FFE1;
+    text-decoration: underline;
+    color: #e0b1b1;
 }
 
 .but {

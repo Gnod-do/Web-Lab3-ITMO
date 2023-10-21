@@ -1,4 +1,5 @@
 const canvas = document.getElementById('canvas');
+drawCanvas();
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("canvas").addEventListener("click", (e) => {
         let rr = document.getElementById("form:r_chooser");
@@ -31,17 +32,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function drawCanvas() {
-    let rr = document.getElementById("form:r_chooser");
-    console.log("r = " + rr.value);
-    let r = rr.value;
-    let r_text = r + "";
-    let rhalf_text = r / 2 + "";
+    var spinnerInput = document.getElementById("form:r_chooser_input");
+    console.log(spinnerInput);
+    console.log(spinnerInput.value);
+    let r_text = spinnerInput.value + "";
+    let rhalf_text = spinnerInput.value / 2 + "";
     let canvas = document.getElementById("canvas"),
         context = canvas.getContext("2d");
     canvas.width = 500;
     canvas.height = 500;
     context.clearRect(0, 0, 500, 500);
-    context.fillStyle = "E8D7FF";
+    context.fillStyle = "#E8D7FF";
     context.fillRect(50, 250, 200, 100);
     context.beginPath();
     context.moveTo(250, 250);
@@ -78,14 +79,14 @@ function drawCanvas() {
 }
 
 function drawPoint(x, y, r, result) {
-    let rr = document.getElementById("form:r_chooser");
+    let rr = document.getElementById("form:r_chooser_input");
     let rValue = rr.value;
     let finalX = 250 + x * 200 / rValue;
     let finalY = 250 - y * 200 / rValue;
     let canvas = document.getElementById("canvas"),
         context = canvas.getContext("2d");
     if (result === "false") {
-        context.fillStyle = "#FF2A1F";
+        context.fillStyle = "#f0dfde";
     } else {
         context.fillStyle = "#5FFF33";
     }

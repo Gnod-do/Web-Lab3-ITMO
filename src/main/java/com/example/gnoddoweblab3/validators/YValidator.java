@@ -17,7 +17,7 @@ public class YValidator implements Validator {
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         double y = Double.parseDouble(String.valueOf(value));
-        if (y <= min || y >= max) {
+        if (y < min || y > max) {
             throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "X must lie in the interval (-3; 3)!"));
         }
     }
