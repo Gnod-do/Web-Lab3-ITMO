@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <ui:include src="templates/tempheadert.xhtml"></ui:include>
+    <link rel="icon" href="resources/images/favicon.ico" type="image/x-icon"/>
+</h:head>
+<h:body onload="drawCanvas()" class="body">
+    <h:outputStylesheet library="css" name="form.css"/>
+    <h:outputScript library="javascript" name="canvas.js"></h:outputScript>
+    <ui:include src="templates/temphead.xhtml"></ui:include>
+    <canvas id="canvas"></canvas>
+    <ui:include src="templates/mainform.xhtml"></ui:include>
+    <ui:include src="templates/table.xhtml"></ui:include>
+    <ui:include src="templates/hiddenform.xhtml"></ui:include>
+    <h:button class="but" outcome="indx" value="go to welcome page"/>
+</h:body>
+</html>

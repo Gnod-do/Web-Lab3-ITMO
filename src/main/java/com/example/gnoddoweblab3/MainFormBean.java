@@ -41,16 +41,12 @@ public class MainFormBean implements Serializable {
     }
 
     public void submit() {
-        newCheck.checkHit();
         if (validate(newCheck)) {
+            newCheck.checkHit();
             Check checkForTheList = new Check(newCheck.getX(), newCheck.getY(), newCheck.getR(), newCheck.isResult());
             this.databaseWorker.add(checkForTheList);
         }
     }
-
-//    public void deleteButton() {
-//        databaseWorker.delete();
-//    }
 
     public boolean validate(Check check) {
         return (((check.getX() >= -5) && (check.getX() <= 5)) && (check.getY() > -3 && (check.getY() < 3)) && ((check.getR() > 1) && (check.getR() < 3)));

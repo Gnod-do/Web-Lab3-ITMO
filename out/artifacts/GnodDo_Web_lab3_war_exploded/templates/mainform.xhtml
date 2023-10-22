@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <div>
+        <h:form id="form">
+            <p>X=</p>
+            <p:spinner id="x_chooser" min="-5" max="5" stepFactor="1" value="#{mainFormBean.newCheck.x}"
+                       converterMessage="R must be a number and lie in the interval (-5; 5)!"
+                       validatorMessage="R must lie in the interval (-5; 5)!">
+                <f:validator validatorId="validateX" />
+            </p:spinner>
+            <h:message id="messageX" for="x_chooser" />
+
+
+            <p>Y=</p>
+            <p:inputText id="y_chooser" value="#{mainFormBean.newCheck.y}" maxlength="10" required="true"
+                         requiredMessage="Enter Y!"
+                         converterMessage="Y must be number and lie in the interval (-3; 3)!"
+                         validatorMessage="Y must lie in the interval (-3; 3)!">
+                <f:validator validatorId="validateY"/>
+                <f:ajax event="change" render="messageY"/>
+            </p:inputText>
+            <h:message id="messageY" for="y_chooser"/>
+            <p>R=</p>
+            <div class="rCenter" style="margin-bottom: 10px">
+                <p:spinner id="r_chooser" min="1" max="4" stepFactor="0.5" value="#{mainFormBean.newCheck.r}" onchange="changeR()"
+                           converterMessage="R must be number and lie in the interval (1; 3)!"
+                           validatorMessage="R must lie in the interval(1; 3)!" >
+                    <f:validator validatorId="validateR"/>
+                    <f:ajax event="change" render="messageR"/>
+                </p:spinner>
+            </div>
+
+
+            <p:commandButton id="submit" action="#{mainFormBean.submit()}" value="submit" onclick="drawCanvas()"
+                             update="resultTable"/>
+        </h:form>
+    </div>
+</h:body>
+</html>

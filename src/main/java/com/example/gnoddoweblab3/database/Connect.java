@@ -1,21 +1,40 @@
 package com.example.gnoddoweblab3.database;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class Connect {
     private Connection connection;
 
-    private final String JDBC_DRIVER = "org.postgresql.Driver";
+    private String JDBC_DRIVER = "";
 
-    private final String dbURL = "jdbc:postgresql://localhost:5432/Lab7DB";
+    private String dbURL = "";
 
-    private final String dbUserName = "postgres";
+    private String dbUserName = "";
 
-    private final String dbPassword = "21052002";
+    private String dbPassword = "";
+
+    public void configDatabase() {
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileInputStream("C:\\Users\\anhdo\\IdeaProjects\\GnodDo-Web-lab3\\src\\main\\java\\com\\example\\gnoddoweblab3\\database\\config.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to open file!");
+        }
+
+        JDBC_DRIVER = properties.getProperty("JDBC_DRIVER");
+        dbURL = properties.getProperty("DB_URL");
+        dbUserName = properties.getProperty("DB_USERNAME");
+        dbPassword = properties.getProperty("DB_PASSWORD");
+    }
 
     private void setConnection() {
+        configDatabase();
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(dbURL, dbUserName, dbPassword);
