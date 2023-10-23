@@ -1,5 +1,6 @@
 package com.example.gnoddoweblab3.database;
 
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -7,9 +8,12 @@ import java.sql.Statement;
 
 public class Saver {
 
-    private Connection connection = null;
+    private Connection connection;
 
     private final Connect connect = new Connect();
+
+    public Saver() throws FileNotFoundException {
+    }
 
     protected void init() {
         connection = connect.getConnection();

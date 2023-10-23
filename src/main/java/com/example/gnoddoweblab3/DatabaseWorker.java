@@ -2,6 +2,7 @@ package com.example.gnoddoweblab3;
 
 import com.example.gnoddoweblab3.database.Saver;
 
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,7 +20,7 @@ public class DatabaseWorker implements Serializable {
 
     private final Connection connection;
 
-    public DatabaseWorker() {
+    public DatabaseWorker() throws FileNotFoundException {
         this.checks = new ArrayList<Check>();
         this.saver.createTable();
         this.connection = saver.getConnection();

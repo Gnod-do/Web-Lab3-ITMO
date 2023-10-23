@@ -2,6 +2,7 @@ package com.example.gnoddoweblab3;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 
 @ManagedBean(name = "mainFormBean")
@@ -25,7 +26,7 @@ public class MainFormBean implements Serializable {
         this.databaseWorker = databaseWorker;
     }
 
-    public MainFormBean() {
+    public MainFormBean() throws FileNotFoundException {
         this.newCheck = new Check();
         this.databaseWorker = new DatabaseWorker();
         databaseWorker.getPoint();
@@ -41,8 +42,8 @@ public class MainFormBean implements Serializable {
     }
 
     public void submit() {
+        newCheck.checkHit();
         if (validate(newCheck)) {
-            newCheck.checkHit();
             Check checkForTheList = new Check(newCheck.getX(), newCheck.getY(), newCheck.getR(), newCheck.isResult());
             this.databaseWorker.add(checkForTheList);
         }

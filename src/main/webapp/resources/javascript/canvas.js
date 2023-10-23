@@ -1,5 +1,5 @@
 const canvas = document.getElementById('canvas');
-drawCanvas();
+// drawCanvas();
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("canvas").addEventListener("click", (e) => {
         let rr = document.getElementById("form:r_chooser");
@@ -99,10 +99,12 @@ function drawPoint(x, y, r, result) {
 
 function drawPoints() {
     let coordinates = Array.prototype.slice.call(document.getElementById("resultTable").getElementsByTagName("td"));
+    // console.log("Day la cai toi de ve diem " + coordinates);
     for (let i = 0; i < coordinates.length; i = i + 4) {
-        drawPoint(Number(coordinates[i].innerHTML),
-            Number(coordinates[i + 1].innerHTML),
-            Number(coordinates[i + 2].innerHTML), coordinates[i + 3].innerHTML);
+        console.log(Number(coordinates[i].textContent));
+        drawPoint(Number(coordinates[i].textContent),
+            Number(coordinates[i + 1].textContent),
+            Number(coordinates[i + 2].textContent), coordinates[i + 3].textContent);
     }
 }
 

@@ -1,7 +1,9 @@
 package com.example.gnoddoweblab3.database;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -18,10 +20,11 @@ public class Connect {
 
     private String dbPassword = "";
 
-    public void configDatabase() {
+    public void configDatabase() throws FileNotFoundException {
         Properties properties = new Properties();
-        try {
-            properties.load(new FileInputStream("C:\\Users\\anhdo\\IdeaProjects\\GnodDo-Web-lab3\\src\\main\\java\\com\\example\\gnoddoweblab3\\database\\config.properties"));
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        try (InputStream inputStream = classLoader.getResourceAsStream("config.properties")) {
+            properties.load(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Failed to open file!");
@@ -31,9 +34,13 @@ public class Connect {
         dbURL = properties.getProperty("DB_URL");
         dbUserName = properties.getProperty("DB_USERNAME");
         dbPassword = properties.getProperty("DB_PASSWORD");
+        System.out.println(JDBC_DRIVER);
+        System.out.println(dbURL);
+        System.out.println(dbUserName);
+        System.out.println(dbPassword);
     }
 
-    private void setConnection() {
+    private void setConnection() throws FileNotFoundException {
         configDatabase();
         try {
             Class.forName(JDBC_DRIVER);
@@ -49,7 +56,7 @@ public class Connect {
         return this.connection;
     }
 
-    public Connect() {
+    public Connect() throws FileNotFoundException {
         setConnection();
     }
 }
