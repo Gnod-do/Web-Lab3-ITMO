@@ -1,5 +1,9 @@
 package com.example.gnoddoweblab3.database;
 
+import com.example.gnoddoweblab3.Check;
+import com.example.gnoddoweblab3.MBean.CountBean;
+import com.example.gnoddoweblab3.MBean.HitChanceBean;
+
 import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +13,8 @@ import java.sql.Statement;
 public class Saver {
 
     private Connection connection;
+
+
 
     private final Connect connect = new Connect();
 
@@ -50,4 +56,6 @@ public class Saver {
     public Connection getConnection() {
         return this.connection;
     }
+
+
 }

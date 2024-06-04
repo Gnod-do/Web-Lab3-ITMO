@@ -9,6 +9,9 @@ import java.io.Serializable;
 @SessionScoped
 public class MainFormBean implements Serializable {
 
+//    Area area;
+//    Pointx points;
+
     private Check newCheck;
 
     private DatabaseWorker databaseWorker;
@@ -50,6 +53,20 @@ public class MainFormBean implements Serializable {
     }
 
     public boolean validate(Check check) {
+//        area.setCrtPoint(check);
+//        area.setCrtArea(area.areaFigure());
         return (((check.getX() >= -5) && (check.getX() <= 5)) && (check.getY() > -3 && (check.getY() < 3)) && ((check.getR() > 1) && (check.getR() < 3)));
     }
+
+//    @PostConstruct
+//    public void connectMBean() throws MalformedObjectNameException, NotCompliantMBeanException, InstanceAlreadyExistsException, MBeanException, ReflectionException, AttributeNotFoundException, InstanceNotFoundException, InvalidAttributeValueException {
+//        MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
+//        ObjectName namePoints = new ObjectName("com.example.gnoddoweblab3.MBean.Model:type=Pointx");
+//        ObjectName nameArea = new ObjectName("com.example.gnoddoweblab3.MBean.Model:type=Area");
+//        area = new Area();
+//        points = new Pointx();
+//        mBeanServer.registerMBean(points, namePoints);
+//        mBeanServer.registerMBean(area, nameArea);
+//    }
+
 }

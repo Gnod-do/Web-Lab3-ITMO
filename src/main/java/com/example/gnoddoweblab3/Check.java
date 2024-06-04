@@ -62,7 +62,7 @@ public class Check implements Serializable {
     public void checkHit() {
         boolean condition1 = (x <= 0 && x >= -r/2) && (y >= 0 && y <= r/2) && (x*x + y*y <= r*r/4);
         boolean condition2 = (x <= 0 && x >= -r) && (y >= -r/2 && y <= 0);
-        boolean condition3 = (x <= r && x >= 0) && (y >= -r && y <= 0) && (y >= 2*x -r);
+        boolean condition3 = (x <= r && x >= 0) && (y >= -r && y <= 0) && (y >= x - r);
         boolean result1 = condition1 || condition2 || condition3;
         this.setResult(result1);
     }

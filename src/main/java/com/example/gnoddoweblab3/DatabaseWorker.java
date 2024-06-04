@@ -1,5 +1,7 @@
 package com.example.gnoddoweblab3;
 
+import com.example.gnoddoweblab3.MBean.CountBean;
+import com.example.gnoddoweblab3.MBean.HitChanceBean;
 import com.example.gnoddoweblab3.database.Saver;
 
 import java.io.FileNotFoundException;
@@ -20,6 +22,9 @@ public class DatabaseWorker implements Serializable {
 
     private final Connection connection;
 
+    final CountBean countBean = new CountBean();
+    final HitChanceBean hitChanceBean = new HitChanceBean();
+
     public DatabaseWorker() throws FileNotFoundException {
         this.checks = new ArrayList<Check>();
         this.saver.createTable();
@@ -31,6 +36,7 @@ public class DatabaseWorker implements Serializable {
     }
 
     public void add(Check check) {
+        myBean(check);
         checks.add(check);
         saver.addPoint(check.getX(), check.getY(), check.getR(), check.isResult());
     }
@@ -50,6 +56,11 @@ public class DatabaseWorker implements Serializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void myBean(Check point){
+        countBean.update(point);
+        hitChanceBean.updateCounters(point.isResult());
     }
 
 //    public void delete() {
